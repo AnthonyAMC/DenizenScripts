@@ -153,3 +153,60 @@ dTests_DataStorage_Definitions_4:
 # - END DEFINITIONS
 #
 # ---------------------------------------------------------------------------- #
+#
+# FLAGS
+#
+# ------------------------------------ #
+#
+dTests_DataStorage_Flags_1:
+# >ex run s@dTests_DataStorage_Flags_1 instantly
+# [01:19:24] [Server thread/INFO]: Executing Denizen script command...
+# [01:19:24] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_ExecutedConnecticutHitachi'... 
+# [01:19:24] [Server thread/INFO]: +- Queue 'EXCOMMAND_ExecutedConnecticutHitachi' Executing: (line 1) RUN s@dTests_DataStorage_Flags_1 instantly ---------+ 
+# [01:19:24] [Server thread/INFO]: +> Executing 'RUN': script='s@dTests_datastorage_flags_1 (TASK)'  instant='true' 
+# [01:19:24] [Server thread/INFO]:  Completing queue 'EXCOMMAND_ExecutedConnecticutHitachi' in 393ms. 
+
+  type: task
+  debug: false
+  comment: 'Flag with literal value'
+  script:
+  - repeat 100000:
+    - flag server dTests_DataStorage_Flags_1:true
+  - flag server dTests_DataStorage_Flags_1:!
+#
+dTests_DataStorage_Flags_2:
+# >ex run s@dTests_DataStorage_Flags_2 instantly
+# [01:20:59] [Server thread/INFO]: Executing Denizen script command...
+# [01:20:59] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_SonicLoginBox'... 
+# [01:20:59] [Server thread/INFO]: +- Queue 'EXCOMMAND_SonicLoginBox' Executing: (line 1) RUN s@dTests_DataStorage_Flags_2 instantly ---------+ 
+# [01:20:59] [Server thread/INFO]: +> Executing 'RUN': script='s@dTests_datastorage_flags_2 (TASK)'  instant='true' 
+# [01:21:00] [Server thread/INFO]:  Completing queue 'EXCOMMAND_SonicLoginBox' in 404ms. 
+  type: task
+  debug: false
+  comment: 'Flag with <[def]>'
+  script:
+  - define a 'a'
+  - repeat 100000:
+    - flag server dTests_DataStorage_Flags_2:<[a]>
+  - flag server dTests_DataStorage_Flags_2:!
+#
+dTests_DataStorage_Flags_3:
+# >ex run s@dTests_DataStorage_Flags_3 instantly
+# [01:21:44] [Server thread/INFO]: Executing Denizen script command...
+# [01:21:44] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_CertainlyBasinAqua'... 
+# [01:21:44] [Server thread/INFO]: +- Queue 'EXCOMMAND_CertainlyBasinAqua' Executing: (line 1) RUN s@dTests_DataStorage_Flags_3 instantly ---------+ 
+# [01:21:44] [Server thread/INFO]: +> Executing 'RUN': script='s@dTests_datastorage_flags_3 (TASK)'  instant='true' 
+# [01:21:45] [Server thread/INFO]:  Completing queue 'EXCOMMAND_CertainlyBasinAqua' in 818ms.
+  type: task
+  debug: false
+  comment: 'Flag with <flag[flag]>'
+  script:
+  - flag server dTests_DataStorage_Flags_3:true
+  - repeat 100000:
+    - flag server dTests_DataStorage_Flags_3:<server.flag[dTests_DataStorage_Flags_3]>
+  - flag server dTests_DataStorage_Flags_3:!
+#
+#
+# - END FLAGS
+#
+# ---------------------------------------------------------------------------- #
