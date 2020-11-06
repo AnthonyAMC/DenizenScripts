@@ -51,7 +51,7 @@ dTests_Events_World:
 
     on reload scripts:
       - announce to_console "[dTests] dTests_Events_World: Scripts Reloaded"
-      - announce to_console "[dTests] Context: had_error = <c.had_error>"
+      - announce to_console "[dTests] Context: had_error = <context.had_error>"
 
     on server prestart:
       - announce to_console "[dTests] dTests_Events_World: Server Prestart"
@@ -100,9 +100,9 @@ dTests_DataStorage_Definitions_1:
   debug: false
   comment: 'Define literal value'
   script:
-  - define a 'a'
+  - define a a
   - repeat 100000:
-    - define x 'a'
+    - define x a
 #
 dTests_DataStorage_Definitions_2:
 # >ex run s@dTests_DataStorage_Definitions_2 instantly
@@ -115,7 +115,7 @@ dTests_DataStorage_Definitions_2:
   debug: false
   comment: 'Define with <[def]>'
   script:
-  - define a 'a'
+  - define a a
   - repeat 100000:
     - define x <[a]>
 dTests_DataStorage_Definitions_3:
@@ -129,7 +129,7 @@ dTests_DataStorage_Definitions_3:
   debug: false
   comment: 'Define with <definition[def]>'
   script:
-  - define a 'a'
+  - define a a
   - repeat 100000:
     - define x <definition[a]>
 #
@@ -185,7 +185,7 @@ dTests_DataStorage_Flags_2:
   debug: false
   comment: 'Flag with <[def]>'
   script:
-  - define a 'a'
+  - define a a
   - repeat 100000:
     - flag server dTests_DataStorage_Flags_2:<[a]>
   - flag server dTests_DataStorage_Flags_2:!
@@ -199,7 +199,7 @@ dTests_DataStorage_Flags_3:
 # [01:21:45] [Server thread/INFO]:  Completing queue 'EXCOMMAND_CertainlyBasinAqua' in 818ms.
   type: task
   debug: false
-  comment: 'Flag with <flag[flag]>'
+  # comment: 'Flag with <flag[flag]>'
   script:
   - flag server dTests_DataStorage_Flags_3:true
   - repeat 100000:
