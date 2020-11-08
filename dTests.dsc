@@ -206,6 +206,48 @@ dTests_DataStorage_Flags_3:
     - flag server dTests_DataStorage_Flags_3:<server.flag[dTests_DataStorage_Flags_3]>
   - flag server dTests_DataStorage_Flags_3:!
 #
+dTests_DataStorage_Flags_write:
+# >ex run <script[dTests_DataStorage_flags_write]>
+# [00:52:27] [Server thread/INFO]: Executing Denizen script command...
+# [00:52:27] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_GmcDenizenPassed'... 
+# [00:52:27] [Server thread/INFO]: +- Queue 'EXCOMMAND_GmcDenizenPassed' Executing: (line 1) RUN <script[dTests_DataStorage_flags_write]> ---------+ 
+# [00:52:27] [Server thread/INFO]:  Filled tag <script[dTests_DataStorage_flags_write]> with 's@dtests_datastorage_flags_write (TASK)'. 
+# [00:52:27] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_datastorage_flags_write (TASK)' 
+# [00:52:27] [Server thread/INFO]:  Completing queue 'EXCOMMAND_GmcDenizenPassed' in 398ms. 
+  type: task
+  debug: false
+  script:
+  - repeat 100000:
+    - flag server dTests_DataStorage_Flags_write:1
+#
+dTests_DataStorage_Flags_read:
+# >ex run <script[dTests_DataStorage_flags_read]>
+# [00:57:36] [Server thread/INFO]: Executing Denizen script command...
+# [00:57:36] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_PikeSoutheastWeekends'... 
+# [00:57:36] [Server thread/INFO]: +- Queue 'EXCOMMAND_PikeSoutheastWeekends' Executing: (line 1) RUN <script[dTests_DataStorage_flags_read]> ---------+ 
+# [00:57:36] [Server thread/INFO]:  Filled tag <script[dTests_DataStorage_flags_read]> with 's@dtests_datastorage_flags_read (TASK)'. 
+# [00:57:36] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_datastorage_flags_read (TASK)' 
+# [00:57:36] [Server thread/INFO]:  Completing queue 'EXCOMMAND_PikeSoutheastWeekends' in 489ms. 
+  type: task
+  debug: false
+  script:
+  - repeat 100000:
+    - define a <server.flag[dTests_DataStorage_Flags_write]>
+#
+dTests_DataStorage_Flags_writeRead:
+# >ex run <script[dTests_DataStorage_flags_writeRead]>
+# [00:58:47] [Server thread/INFO]: Executing Denizen script command...
+# [00:58:47] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_TonyJudyPaintball'... 
+# [00:58:47] [Server thread/INFO]: +- Queue 'EXCOMMAND_TonyJudyPaintball' Executing: (line 1) RUN <script[dTests_DataStorage_flags_writeRead]> ---------+ 
+# [00:58:47] [Server thread/INFO]:  Filled tag <script[dTests_DataStorage_flags_writeRead]> with 's@dtests_datastorage_flags_writeread (TASK)'. 
+# [00:58:47] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_datastorage_flags_writeread (TASK)' 
+# [00:58:48] [Server thread/INFO]:  Completing queue 'EXCOMMAND_TonyJudyPaintball' in 817ms. 
+  type: task
+  debug: false
+  script:
+  - repeat 100000:
+    - flag server dTests_DataStorage_Flags_write:<server.flag[dTests_DataStorage_Flags_write]>
+#
 #
 # - END FLAGS
 #
@@ -228,13 +270,13 @@ dTests_DataStorage_yaml_load:
   script:
   - if !<server.has_file[dTests/yaml_test.yml]>:
     - yaml create id:dTests_DataStorage_yaml
-    - yaml set emptyValue:<empty> id:dTests_DataStorage_yaml
+    - yaml set value:1 id:dTests_DataStorage_yaml
     - yaml savefile:dTests/yaml_test.yml id:dTests_DataStorage_yaml
   - if <yaml.list.contains[dTests_DataStorage_yaml]>:
     - yaml unload id:dTests_DataStorage_yaml
   - repeat 10000:
     - yaml load:dTests/yaml_test.yml id:dTests_DataStorage_yaml
-
+#
 dTests_DataStorage_yaml_write:
 # >ex run <script[dTests_DataStorage_yaml_write]>
 # [00:24:39] [Server thread/INFO]: Executing Denizen script command...
@@ -247,7 +289,7 @@ dTests_DataStorage_yaml_write:
   debug: false
   script:
   - repeat 100000:
-    - yaml set emptyValue:<empty> id:dTests_DataStorage_yaml
+    - yaml set value:1 id:dTests_DataStorage_yaml
 #
 dTests_DataStorage_yaml_read:
 # >ex run <script[dTests_DataStorage_yaml_read]>
@@ -261,7 +303,21 @@ dTests_DataStorage_yaml_read:
   debug: false
   script:
   - repeat 100000:
-    - define a <yaml[dTests_DataStorage_yaml].read[emptyValue]>
+    - define a <yaml[dTests_DataStorage_yaml].read[value]>
+#
+dTests_DataStorage_yaml_writeRead:
+# >ex run <script[dTests_DataStorage_yaml_writeRead]>
+# [00:51:13] [Server thread/INFO]: Executing Denizen script command...
+# [00:51:13] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_NuclearProducingInteraction'... 
+# [00:51:13] [Server thread/INFO]: +- Queue 'EXCOMMAND_NuclearProducingInteraction' Executing: (line 1) RUN <script[dTests_DataStorage_yaml_writeRead]> ---------+ 
+# [00:51:13] [Server thread/INFO]:  Filled tag <script[dTests_DataStorage_yaml_writeRead]> with 's@dtests_datastorage_yaml_writeread (TASK)'. 
+# [00:51:13] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_datastorage_yaml_writeread (TASK)' 
+# [00:51:13] [Server thread/INFO]:  Completing queue 'EXCOMMAND_NuclearProducingInteraction' in 217ms. 
+  type: task
+  debug: false
+  script:
+  - repeat 100000:
+    - yaml set value:<yaml[dTests_DataStorage_yaml].read[value]> id:dTests_DataStorage_yaml
 #
 dTests_DataStorage_yaml_save:
 # >ex run <script[dTests_DataStorage_yaml_save]>
