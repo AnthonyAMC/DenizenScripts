@@ -357,3 +357,171 @@ dTests_DataStorage_yaml_unload:
 #______________________________________________________________________________#
 #                                                                              #
 #==============================================================================#
+
+
+
+
+# ============================================================================ #
+# ---------------------------------------------------------------------------- #
+#                                                                              |
+#   C o n d i t i o n a l s                                                    |
+#                                                                              |
+# ---------------------------------------------------------------------------- #
+#    How to run code blocks based on variables                                 |
+#                                                                              |
+# ____________________________________________________________________________ #
+#                                                                              #
+# ============================================================================ #
+#
+# ---------------------------------------------------------------------------- #
+#
+# IF
+#
+# ------------------------------------ #
+#
+dTests_Conditionals_If:
+# >ex run <script[dTests_Conditionals_If]>
+# [02:01:34] [Server thread/INFO]: Executing Denizen script command...
+# [02:01:34] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_GuiltyCharmingCigarettes'... 
+# [02:01:34] [Server thread/INFO]: +- Queue 'EXCOMMAND_GuiltyCharmingCigarettes' Executing: (line 1) RUN <script[dTests_Conditionals_If]> ---------+ 
+# [02:01:34] [Server thread/INFO]:  Filled tag <script[dTests_Conditionals_If]> with 's@dtests_conditionals_if (TASK)'. 
+# [02:01:34] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_conditionals_if (TASK)' 
+# [02:01:35] [Server thread/INFO]:  Completing queue 'EXCOMMAND_GuiltyCharmingCigarettes' in 74ms. 
+  type: task
+  debug: false
+  script:
+  - repeat 10000:
+    - define val <list[foo|bar|baz].random>
+    - if <[val]> == foo:
+      - repeat next
+    - else if <[val]> == bar:
+      - repeat next
+    - else if <[val]>  == baz:
+      - repeat next
+#
+# - END IF
+#
+# ---------------------------------------------------------------------------- #
+#
+# CHOOSE
+#
+# ------------------------------------ #
+#
+dTests_Conditionals_Choose:
+# >ex run <script[dTests_Conditionals_Choose]>
+# [02:04:41] [Server thread/INFO]: Executing Denizen script command...
+# [02:04:41] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_UndDiscussionsIndustrial'... 
+# [02:04:41] [Server thread/INFO]: +- Queue 'EXCOMMAND_UndDiscussionsIndustrial' Executing: (line 1) RUN <script[dTests_Conditionals_Choose]> ---------+ 
+# [02:04:41] [Server thread/INFO]:  Filled tag <script[dTests_Conditionals_Choose]> with 's@dtests_conditionals_choose (TASK)'. 
+# [02:04:41] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_conditionals_choose (TASK)' 
+# [02:04:41] [Server thread/INFO]:  Completing queue 'EXCOMMAND_UndDiscussionsIndustrial' in 24ms. 
+  type: task
+  debug: false
+  script:
+  - repeat 10000:
+    - define val <list[foo|bar|baz].random>
+    - choose <[val]>:
+      - case foo:
+        - repeat next
+      - case bar:
+        - repeat next
+      - case baz:
+        - repeat next
+#
+# - END CHOOSE
+#
+# ---------------------------------------------------------------------------- #
+#
+# INJECT
+#
+# ------------------------------------ #
+#
+dTests_Conditionals_Inject:
+# >ex run <script[dTests_Conditionals_Inject]>
+# [02:09:27] [Server thread/INFO]: Executing Denizen script command...
+# [02:09:27] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_CarryingWashAuthors'... 
+# [02:09:27] [Server thread/INFO]: +- Queue 'EXCOMMAND_CarryingWashAuthors' Executing: (line 1) RUN <script[dTests_Conditionals_Inject]> ---------+ 
+# [02:09:27] [Server thread/INFO]:  Filled tag <script[dTests_Conditionals_Inject]> with 's@dtests_conditionals_inject (TASK)'. 
+# [02:09:27] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_conditionals_inject (TASK)' 
+# [02:09:27] [Server thread/INFO]:  Completing queue 'EXCOMMAND_CarryingWashAuthors' in 27ms. 
+  type: task
+  debug: false
+  script:
+  - repeat 10000:
+    - define val <list[foo|bar|baz].random>
+    - inject locally <[val]>
+  foo:
+    - repeat next
+  bar:
+    - repeat next
+  baz:
+    - repeat next
+#
+# - END INJECT
+#
+# ---------------------------------------------------------------------------- #
+#
+# RUN
+#
+# ------------------------------------ #
+#
+dTests_Conditionals_Run:
+# >ex run <script[dTests_Conditionals_run]>
+# [02:10:29] [Server thread/INFO]: Executing Denizen script command...
+# [02:10:29] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_AirfareNewportSystematic'... 
+# [02:10:29] [Server thread/INFO]: +- Queue 'EXCOMMAND_AirfareNewportSystematic' Executing: (line 1) RUN <script[dTests_Conditionals_run]> ---------+ 
+# [02:10:29] [Server thread/INFO]:  Filled tag <script[dTests_Conditionals_run]> with 's@dtests_conditionals_run (TASK)'. 
+# [02:10:29] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_conditionals_run (TASK)' 
+# [02:10:29] [Server thread/INFO]:  Completing queue 'EXCOMMAND_AirfareNewportSystematic' in 38ms. 
+  type: task
+  debug: false
+  script:
+  - repeat 10000:
+    - define val <list[foo|bar|baz].random>
+    - run instantly <script[dTests_Conditionals_Run]> path:<[val]>
+  foo:
+    - stop
+  bar:
+    - stop
+  baz:
+    - stop
+#
+# - END RUN
+#
+# ---------------------------------------------------------------------------- #
+#
+# GOTO
+#
+# ------------------------------------ #
+#
+dTests_Conditionals_Goto:
+# >ex run <script[dTests_Conditionals_Goto]>
+# [02:17:10] [Server thread/INFO]: Executing Denizen script command...
+# [02:17:10] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_ControlledLnCreek'... 
+# [02:17:10] [Server thread/INFO]: +- Queue 'EXCOMMAND_ControlledLnCreek' Executing: (line 1) RUN <script[dTests_Conditionals_Goto]> ---------+ 
+# [02:17:10] [Server thread/INFO]:  Filled tag <script[dTests_Conditionals_Goto]> with 's@dtests_conditionals_goto (TASK)'. 
+# [02:17:10] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_conditionals_goto (TASK)' 
+# [02:17:10] [Server thread/INFO]:  Completing queue 'EXCOMMAND_ControlledLnCreek' in 32ms.
+  type: task
+  debug: false
+  script:
+  - repeat 10000:
+    - define val <list[foo|bar|baz].random>
+    - goto <[val]>
+    - mark foo
+    - repeat next
+    - mark bar
+    - repeat next
+    - mark baz
+    - repeat next
+#
+# - END GOTO
+#
+# ---------------------------------------------------------------------------- #
+#                                                                              #
+# END CONDITIONALS                                                             #
+#                                                                              #
+#                                                                              #
+#______________________________________________________________________________#
+#                                                                              #
+#==============================================================================#
