@@ -210,3 +210,94 @@ dTests_DataStorage_Flags_3:
 # - END FLAGS
 #
 # ---------------------------------------------------------------------------- #
+#
+# YAML
+#
+# ------------------------------------ #
+#
+dTests_DataStorage_yaml_load:
+# >ex run <script[dTests_DataStorage_yaml_load]>
+# [00:23:30] [Server thread/INFO]: Executing Denizen script command...
+# [00:23:30] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_AolBeliefsAutomated'... 
+# [00:23:30] [Server thread/INFO]: +- Queue 'EXCOMMAND_AolBeliefsAutomated' Executing: (line 1) RUN <script[dTests_DataStorage_yaml_load]> ---------+ 
+# [00:23:30] [Server thread/INFO]:  Filled tag <script[dTests_DataStorage_yaml_load]> with 's@dtests_datastorage_yaml_load (TASK)'. 
+# [00:23:30] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_datastorage_yaml_load (TASK)' 
+# [00:23:30] [Server thread/INFO]:  Completing queue 'EXCOMMAND_AolBeliefsAutomated' in 346ms. 
+  type: task
+  debug: false
+  script:
+  - if !<server.has_file[dTests/yaml_test.yml]>:
+    - yaml create id:dTests_DataStorage_yaml
+    - yaml set emptyValue:<empty> id:dTests_DataStorage_yaml
+    - yaml savefile:dTests/yaml_test.yml id:dTests_DataStorage_yaml
+  - if <yaml.list.contains[dTests_DataStorage_yaml]>:
+    - yaml unload id:dTests_DataStorage_yaml
+  - repeat 10000:
+    - yaml load:dTests/yaml_test.yml id:dTests_DataStorage_yaml
+
+dTests_DataStorage_yaml_write:
+# >ex run <script[dTests_DataStorage_yaml_write]>
+# [00:24:39] [Server thread/INFO]: Executing Denizen script command...
+# [00:24:39] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_BottomBrakesBecomes'... 
+# [00:24:39] [Server thread/INFO]: +- Queue 'EXCOMMAND_BottomBrakesBecomes' Executing: (line 1) RUN <script[dTests_DataStorage_yaml_write]> ---------+ 
+# [00:24:39] [Server thread/INFO]:  Filled tag <script[dTests_DataStorage_yaml_write]> with 's@dtests_datastorage_yaml_write (TASK)'. 
+# [00:24:39] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_datastorage_yaml_write (TASK)' 
+# [00:24:40] [Server thread/INFO]:  Completing queue 'EXCOMMAND_BottomBrakesBecomes' in 169ms. 
+  type: task
+  debug: false
+  script:
+  - repeat 100000:
+    - yaml set emptyValue:<empty> id:dTests_DataStorage_yaml
+#
+dTests_DataStorage_yaml_read:
+# >ex run <script[dTests_DataStorage_yaml_read]>
+# [00:25:21] [Server thread/INFO]: Executing Denizen script command...
+# [00:25:21] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_JerusalemPurchasesEthics'... 
+# [00:25:21] [Server thread/INFO]: +- Queue 'EXCOMMAND_JerusalemPurchasesEthics' Executing: (line 1) RUN <script[dTests_DataStorage_yaml_read]> ---------+ 
+# [00:25:21] [Server thread/INFO]:  Filled tag <script[dTests_DataStorage_yaml_read]> with 's@dtests_datastorage_yaml_read (TASK)'. 
+# [00:25:21] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_datastorage_yaml_read (TASK)' 
+# [00:25:21] [Server thread/INFO]:  Completing queue 'EXCOMMAND_JerusalemPurchasesEthics' in 138ms. 
+  type: task
+  debug: false
+  script:
+  - repeat 100000:
+    - define a <yaml[dTests_DataStorage_yaml].read[emptyValue]>
+#
+dTests_DataStorage_yaml_save:
+# >ex run <script[dTests_DataStorage_yaml_save]>
+# [00:26:33] [Server thread/INFO]: Executing Denizen script command...
+# [00:26:33] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_StayingFluxLisa'... 
+# [00:26:33] [Server thread/INFO]: +- Queue 'EXCOMMAND_StayingFluxLisa' Executing: (line 1) RUN <script[dTests_DataStorage_yaml_save]> ---------+ 
+# [00:26:33] [Server thread/INFO]:  Filled tag <script[dTests_DataStorage_yaml_save]> with 's@dtests_datastorage_yaml_save (TASK)'. 
+# [00:26:33] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_datastorage_yaml_save (TASK)' 
+# [00:26:34] [Server thread/INFO]:  Completing queue 'EXCOMMAND_StayingFluxLisa' in 1053ms. 
+  type: task
+  debug: false
+  script:
+  - repeat 10000:
+    - yaml savefile:dTests/yaml_test.yml id:dTests_DataStorage_yaml
+#
+dTests_DataStorage_yaml_unload:
+# >ex run <script[dTests_DataStorage_yaml_unload]>
+# [00:27:16] [Server thread/INFO]: Executing Denizen script command...
+# [00:27:16] [Server thread/INFO]:  Starting InstantQueue 'EXCOMMAND_CitizensFittingLarger'... 
+# [00:27:16] [Server thread/INFO]: +- Queue 'EXCOMMAND_CitizensFittingLarger' Executing: (line 1) RUN <script[dTests_DataStorage_yaml_unload]> ---------+ 
+# [00:27:16] [Server thread/INFO]:  Filled tag <script[dTests_DataStorage_yaml_unload]> with 's@dtests_datastorage_yaml_unload (TASK)'. 
+# [00:27:16] [Server thread/INFO]: +> Executing 'RUN': script='s@dtests_datastorage_yaml_unload (TASK)' 
+# [00:27:16] [Server thread/INFO]:  Completing queue 'EXCOMMAND_CitizensFittingLarger' in 0ms.
+  type: task
+  debug: false
+  script:
+  - yaml unload id:dTests_DataStorage_yaml
+#
+#
+# - END YAML
+#
+# ---------------------------------------------------------------------------- #
+#                                                                              #
+# END DATA STORAGE                                                             #
+#                                                                              #
+#                                                                              #
+#______________________________________________________________________________#
+#                                                                              #
+#==============================================================================#
